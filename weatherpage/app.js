@@ -7,6 +7,7 @@ button.addEventListener('click', action);
 function action(){
   const location = "zip=" + document.getElementById('zip').value + ",us";
   getWeather(url, location, api);
+
 }
 
 const getWeather = async (url, location, api)=>{
@@ -15,7 +16,7 @@ const getWeather = async (url, location, api)=>{
    try {
 
      const data = await res.json();
-     console.log(data)
+     // console.log(data)
      // return data;
      postData('/weather', data);
    }  catch(error) {
@@ -26,7 +27,7 @@ const getWeather = async (url, location, api)=>{
 // Post data to server object
 
  const postData = async ( url = '', data = {})=>{
-     console.log(data);
+     // console.log(data);
        const response = await fetch(url, {
        method: 'POST',
        credentials: 'same-origin',
@@ -42,5 +43,14 @@ const getWeather = async (url, location, api)=>{
          return newData;
        }catch(error) {
        console.log("error", error);
-       }
+     }
    }
+
+
+
+function changePage(){
+  let today = new date();
+  const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  // document.getElementById('date').innerHTML = date;
+  console.log("What is today?");
+}

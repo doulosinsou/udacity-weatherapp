@@ -28,11 +28,18 @@ app.post('/weather', addweatherdata);
 
 function addweatherdata(req, res){
   projectData.push(req.body);
-  console.log(req.body);
+
+  // newEntry = {feelings: req.body.feels};
+  //
+  // projectData.push(feelings);
+  // res.send(projectData);
+
+  console.log(projectData);
+  console.log("weather data pushed successfully");
 }
 
 // Get weather Data
-app.get('/weather', getWeather);
-function getWeather(){
-  res.send(projectData);
-}
+// app.get('/weather', getWeather);
+// function getWeather(){
+//   res.send(projectData);
+// }
