@@ -18,3 +18,10 @@ const server = app.listen(port, runServer);
 function runServer() {
   console.log("this server is running on port " + port );
 }
+
+const projectData = [];
+app.post('/weather', addweatherdata);
+
+function addweatherdata(req, res){
+  projectData.push(req.body);
+}
