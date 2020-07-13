@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,15 +7,15 @@
   <title>Luke Moyer's Weather App</title>
 
   <link href="styles.css" rel="stylesheet">
-  <script src="app.js"></script>
+
 
 </head>
 <body>
-  <form method="get" action="/getweather">
+  <!-- <form> -->
   <input id="zip" placeholder="Zip Code"></input>
   <textarea id="feelings"></textarea>
-  <button id="generate">update weather</button>
-  </form>
+  <button type="button" id="generate">update weather</button>
+  <!-- </form> -->
 
   <div id="entryHolder">
     <div id="date"></div>
@@ -23,5 +23,6 @@
     <div id="content"></div>
   </div>
 
+<script src="app.js"></script>
 </body>
 </html>
