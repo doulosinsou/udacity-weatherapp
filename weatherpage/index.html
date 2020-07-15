@@ -7,6 +7,8 @@
   <title>Luke Moyer's Weather App</title>
 
   <link href="styles.css" rel="stylesheet">
+  <!-- <script src="app.js"></script> -->
+  <script src="apptest.js"></script>
 
 
 </head>
@@ -19,13 +21,29 @@
   <button type="button" id="generate">update weather</button>
   <!-- </form> -->
 <div id ="entryWrapper">
-  <div id="entryHolder">
-    <div id="date"></div>
-    <div id="time"></div>
-    <div id="content"></div>
+  <div class="entryHolder">
+    <div class="date">
+      <p>Wed Jul 15 2020</p>
+    </div>
+    <div class="time">
+      <p>2:54PM</p>
+    </div>
+    <div class="content">
+        <p>77</p>
+        <p>F</p>
+        <p>But it feels like 80</p>
+        <img src="http://openweathermap.org/img/wn/10d.png" alt="weather logo">
+        <p>Andalusia</p>
+        <p>I just refreshed the page, but the data should still be on the server for me</p>
+    </div>
   </div>
 </div>
+<!-- <div id="entryHolder">
+  <div id="date"></div>
+  <div id="time"></div>
+  <div id="content"></div>
+</div> -->
 
-<script src="app.js"></script>
+
 </body>
 </html>

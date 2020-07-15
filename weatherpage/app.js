@@ -2,8 +2,10 @@ const url = "https://api.openweathermap.org/data/2.5/weather?";
 const api = "&appid=cc7294b368fa089de71eccdcee3e807b";
 // const api = "testing";
 
+window.addEventListener('load', ()=>{
 const button = document.getElementById('generate');
 button.addEventListener('click', action);
+})
 
 function action(){
   const location = "zip=" + document.getElementById('zip').value + ",us";
@@ -11,10 +13,11 @@ function action(){
   console.log(setUnit);
   const unit = "&units="+ setUnit;
   getWeather(url, location, unit, api)
-  .then(
-    // changePage(1)
-    console.log("changePage called"),
+  .then (
+    changePage(1)
   );
+  // findWeather('/weather');
+
 };
 
 const getWeather = async (url, location, unit, api)=>{
@@ -23,9 +26,9 @@ const getWeather = async (url, location, unit, api)=>{
    try {
 
      const data = await res.json();
-     // console.log("getWeather function Try successful")
-     // return data;
+     console.log("getWeather function Try successful");
      postData('/weather', data);
+     return data;
    }  catch(error) {
      console.log("error", error);
    }
@@ -74,19 +77,15 @@ function changePage(iteration){
   // find most recent projectData object
 
 let datacall = findWeather("/weather");
-if (datacall.length=0){
-  iteration = 0;
-}
+// if (datacall.length=0){
+//   iteration = 0;
+// }
 datacall = datacall[(datacall.length - iteration)];
 console.log(datacall.length);
 
 for (data in datacall){
   console.log("another object");
 
-
-
-  // const recent = datacall.length - 1;
-  // const weather = datacall[recent];
   const weather = datacall[data];
 
   // get and post Time
