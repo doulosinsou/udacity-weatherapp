@@ -37,6 +37,22 @@ header{
   height: 120px
 }
 
+#validate{
+  text-align: center;
+  color:#e40000;
+}
+.hide{
+  display:none;
+}
+
+.show{
+  display:block;
+}
+
+.highlight{
+  border: thick solid red;
+}
+
 .entryHolder{
   width: 80%;
   max-width: 500px;
@@ -101,7 +117,7 @@ header{
 /* Background picture to change with weather report */
 #background-img{
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   top:0;
   left:0;
   box-sizing: border-box;

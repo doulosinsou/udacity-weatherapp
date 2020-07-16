@@ -1,7 +1,25 @@
 //set listener to button to make api call
 window.addEventListener('load', ()=>{
-document.getElementById('generate').addEventListener('click',action);
+document.getElementById('generate').addEventListener('click',validate);
 })
+
+function zipcheck(){
+
+}
+
+function validate(e){
+  const zip = document.getElementById('zip');
+  const validate = document.getElementById('validate');
+  if (zip.value === "" || e === "invalid zip code"){
+    console.log('please add zip');
+    zip.classList.add("highlight");
+    validate.classList.add("show");
+  }else{
+    zip.classList.remove("highlight");
+    validate.classList.remove("show");
+    action()
+  }
+}
 
 async function action(){
   const url = "https://api.openweathermap.org/data/2.5/weather?";
@@ -11,11 +29,15 @@ async function action(){
   const unit = "&units="+ setUnit;
 
   const data = await getWeather(url, location, unit, api);
-  postData('/weather', data)
-  .then(function(){
-    // findWeather('/weather')
-    changePage()
-  })
+  if (data.main != null){
+    postData('/weather', data)
+    .then(function(){
+      changePage()
+    })
+  }else{
+    console.log("city not found");
+    validate("invalid zip code");
+  }
 }
 
 //calls api data
@@ -200,7 +222,7 @@ async function backgroundImg(datacall){
   if (icon === "01n" || icon === "02n"){
     img.setAttribute("class", "moon")
   }else
-  if (icon === "03d" || icon === "04d.png"){
+  if (icon === "03d" || icon === "04d"){
     img.setAttribute("class", "cloudday")
   }else
   if (icon === "03n" || icon === "04n"){
