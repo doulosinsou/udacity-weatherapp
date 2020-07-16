@@ -1,0 +1,140 @@
+body{
+  background-color: #bbdbe3;
+  padding: 50px;
+  font-family: sans-serif;
+  min-width: 570px;
+}
+
+header{
+  width: 80%;
+  margin: 0 auto;
+  text-align:center;
+  font-size: 1.2em;
+}
+
+#form{
+  width: 80%;
+  max-width: 500px;
+  margin:0 auto;
+  background-color:#edda6c;
+  display: flex;
+  flex-direction: column;
+  flex-wrap:wrap;
+  padding: 20px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,.3);
+}
+
+#zip,#feelings,#generate{
+  font-size: 1.4em;
+  margin: 10px 0;
+}
+
+#units{
+  text-align: center;
+}
+
+#feelings{
+  height: 120px
+}
+
+.entryHolder{
+  width: 80%;
+  max-width: 500px;
+  margin: 40px auto;
+  background-color:#f4e6e8;
+  padding: 20px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,.3);
+  text-align: center;
+}
+.date, .time{
+  display:inline-block;
+  font-size: 2em;
+  padding: 0 5px;
+}
+.content{
+  text-align: left;
+  position: relative;
+  display:flex;
+  /* flex-direction: column; */
+  flex-wrap:wrap;
+}
+.temp{
+  font-size: 8em;
+  position: relative;
+  display:inline;
+}
+.temp::after{
+  content:"o";
+  font-size: .3em;
+  position: absolute;
+}
+.units{
+  display: inline;
+  font-size: 3em;
+  margin-left: -5px;
+}
+.feels-like{
+  color:#888888;
+
+}
+.tempshell{
+  flex:2;
+  text-align: center;
+  padding-top: 40px;
+  /* box-sizing: content-box; */
+}
+.content img{
+  flex:2;
+}
+
+.location{
+  font-size: 2.5em;
+  margin:0;
+}
+.feelings{
+  font-size: 1.2em;
+  margin-top: 40px;
+  width: 100%;
+}
+
+
+/* Background picture to change with weather report */
+#background-img{
+  height: 100vh;
+  width: 100vw;
+  top:0;
+  left:0;
+  box-sizing: border-box;
+  position: fixed;
+  z-index:-10;
+  background-size: cover;
+  opacity: .5;
+
+  /* background-image: url(img/sun.png); */
+
+}
+.sun{
+  background-image: url(img/sun.png);
+}
+.fog{
+  background-image: url(img/fog.jpg);
+}
+.snow{
+  background-image: url(img/snow.jpg);
+}
+.rain{
+  background-image: url(img/rain.png);
+}
+.moon{
+  background-image: url(img/moon.png);
+}
+.cloudday{
+  background-image: url(img/cloudday.png);
+}
+.cloudnight{
+  background-image: url(img/cloudnight.png);
+}
+
+footer{
+  text-align:center;
+}

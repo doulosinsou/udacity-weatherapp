@@ -1,6 +1,6 @@
 //set listener to button to make api call
 window.addEventListener('load', ()=>{
-document.getElementById('generate').addEventListener('click',action)
+document.getElementById('generate').addEventListener('click',action);
 })
 
 async function action(){
@@ -26,6 +26,12 @@ const getWeather = async (url, location, unit, api)=>{
    try {
      let data = await res.json();
      data.feels = feelings;
+     if (document.querySelector('input[name="unit"]:checked').value ==="imperial"){
+       data.units = "imperial";
+     }else {
+       data.units= "metric";
+     }
+
      return data;
    }  catch(error) {
      console.log("error", error);
@@ -70,7 +76,9 @@ async function changePage(){
   console.log(datacall);
 
   document.getElementById('entryWrapper').innerHTML= "";
-  // const recentData= data[data.length-1];
+
+  backgroundImg(datacall);
+
   for (data in datacall){
     const weather = datacall[data];
 
@@ -103,40 +111,42 @@ async function changePage(){
   // create temperature block
 
     const temp = document.createElement('p');
+    temp.classList.add('temp');
     const roundTemp = Math.round(weather.main.temp);
     temp.innerHTML = roundTemp;
 
   // create degrees block
 
     let degrees
-    if ( document.querySelector('input[name="unit"]:checked').value= "imperial"){
-      degrees = "F";
-    } else {
-      degrees = "C"
+    if (weather.units === "imperial"){
+      degrees="F"
+    }else {
+      degrees="C"
     }
-
     const un = document.createElement('p');
+    un.classList.add('units');
     un.innerHTML = degrees;
 
     // create a feels like block
 
     const feelstemp = document.createElement('p');
+    feelstemp.classList.add('feels-like');
     const roundFeel = Math.round(weather.main.feels_like);
     feelstemp.innerText = "But it feels like " + roundFeel;
-    // feelstemp.innerText = "But it feels like " + "96";
 
-  //create weather logo block
-  const logo = document.createElement('img');
-  logo.src = "http://openweathermap.org/img/wn/"+weather.weather[0].icon+".png";
-  logo.alt = "weather logo";
+    //create location block
+    const locBlock = document.createElement('p');
+    locBlock.classList.add('location');
+    locBlock.innerHTML= weather.name;
 
-
-  //create location block
-  const locBlock = document.createElement('p');
-  locBlock.innerHTML= weather.name;
+    //create weather logo block
+    const logo = document.createElement('img');
+    logo.src = "http://openweathermap.org/img/wn/"+weather.weather[0].icon+"@4x.png";
+    logo.alt = "weather logo";
 
     // create feelings block
     const feelings = document.createElement('p');
+    feelings.classList.add('feelings');
     feelings.innerHTML = weather.feels;
     // feelings.innerHTML = document.getElementById('feelings').value;
 
@@ -144,11 +154,13 @@ async function changePage(){
 
 
     const entryholder = document.createElement('div');
-    entryholder.classList.add('entryholder');
+    entryholder.classList.add('entryHolder');
     const datediv = document.createElement('div');
     datediv.classList.add('date');
     const timediv = document.createElement('div');
     timediv.classList.add('time');
+    const tempshell = document.createElement('div');
+    tempshell.classList.add('tempshell');
     const contentdiv = document.createElement('div');
     contentdiv.classList.add('content');
 
@@ -156,23 +168,53 @@ async function changePage(){
     datediv.appendChild(dateBlock);
     timediv.appendChild(nowBlock);
 
-    contentFrag.appendChild(temp);
-    contentFrag.appendChild(un);
-    contentFrag.appendChild(feelstemp);
-    contentFrag.appendChild(logo);
-    contentFrag.appendChild(locBlock);
-    contentFrag.appendChild(feelings);
+    tempshell.appendChild(temp);
+    tempshell.appendChild(un);
+    tempshell.appendChild(feelstemp);
+    tempshell.appendChild(locBlock);
+
+    contentdiv.appendChild(tempshell);
+    contentdiv.appendChild(logo);
+    contentdiv.appendChild(feelings);
 
     entryholder.appendChild(datediv);
     entryholder.appendChild(timediv);
     entryholder.appendChild(contentdiv);
-    entryholder.appendChild(contentFrag);
 
     blockFrag.appendChild(entryholder);
 
     const wrapper = document.getElementById('entryWrapper');
-    // content.parentElement.prepend(blockFrag);
     wrapper.prepend(blockFrag);
   };
+
+}
+
+async function backgroundImg(datacall){
+  const recWeather = datacall[datacall.length - 1];
+  const icon = recWeather.weather[0].icon;
+  const img = document.getElementById('background-img');
+
+  if (icon === "01d" || icon ==="02d"){
+    img.setAttribute("class", "sun")
+  }else
+  if (icon === "01n" || icon === "02n"){
+    img.setAttribute("class", "moon")
+  }else
+  if (icon === "03d" || icon === "04d.png"){
+    img.setAttribute("class", "cloudday")
+  }else
+  if (icon === "03n" || icon === "04n"){
+    img.setAttribute("class", "cloudnight")
+  }else
+  if (icon === "09d" || icon === "09n" || icon === "10d" || icon === "10n" || icon === "11d" || icon === "11n"){
+    img.setAttribute("class", "rain")
+  }else
+  if (icon === "13d" || icon === "13n"){
+    img.setAttribute("class", "snow")
+  }else
+  if (icon === "50d" || icon === "50n"){
+    img.setAttribute("class", "fog")
+  }
+
 
 }

@@ -7,41 +7,59 @@
   <title>Luke Moyer's Weather App</title>
 
   <link href="styles.css" rel="stylesheet">
-  <!-- <script src="app.js"></script> -->
   <script src="apptest.js"></script>
 
 
 </head>
 <body>
-  <!-- <form> -->
-  <input id="zip" placeholder="Zip Code"></input>
-  <input type="radio" name="unit" value="imperial" checked>F</input>
-  <input type="radio" name="unit" value="metric">C</input>
-  <textarea id="feelings"></textarea>
-  <button type="button" id="generate">update weather</button>
-  <!-- </form> -->
-<div id ="entryWrapper">
-  <div class="entryHolder">
-    <div class="date">
-      <p>Wed Jul 15 2020</p>
+  <header>
+    <div id="background-img"></div>
+    <h1>This is your weather journal</h1>
+    <p>Tell me where you are and how you feel. Come back when your mood changes and we can trace how the weather might be impacting your mood!</p>
+  </header>
+  <main>
+  <div id="form">
+    <input id="zip" placeholder="Zip Code"></input>
+    <div id="units">I want my degrees in
+      <input type="radio" name="unit" value="imperial" checked>Fahrenheit</input>
+      <input type="radio" name="unit" value="metric">Celsius</input>
     </div>
-    <div class="time">
-      <p>2:54PM</p>
-    </div>
-    <div class="content">
-        <p>77</p>
-        <p>F</p>
-        <p>But it feels like 80</p>
-        <img src="http://openweathermap.org/img/wn/10d.png" alt="weather logo">
-        <p>Andalusia</p>
-        <p>I just refreshed the page, but the data should still be on the server for me</p>
-    </div>
+    <textarea id="feelings" placeholder="I feel so blessed right now!"></textarea>
+    <button type="button" id="generate">update journal</button>
   </div>
-</div>
+
+  <div id ="entryWrapper">
+  </div>
+</main>
+<footer>
+  <p>Weather app made by Luke Moyer with <a href="www.openweathermap.com">openweathermap.com</a></p>
+</footer>
+<!-- This is what project Rubric calls for -->
 <!-- <div id="entryHolder">
   <div id="date"></div>
   <div id="time"></div>
   <div id="content"></div>
+</div> -->
+
+<!-- This is my template after js makes it -->
+<!-- <div class="entryHolder">
+  <div class="date">
+    <p>Wed Jul 15 2020</p>
+  </div>
+  <div class="time">
+    <p>2:54PM</p>
+  </div>
+  <div class="content">
+    <div class="tempshell">
+      <p class="temp">77</p>
+      <p class="units">F</p>
+      <p class="feels-like">But it feels like 80</p>
+      <p class="location">Andalusia</p>
+    </div>
+      <img src="http://openweathermap.org/img/wn/10d@4x.png" alt="weather logo">
+
+      <p class="feelings">This is my demo item</p>
+  </div>
 </div> -->
 
 
