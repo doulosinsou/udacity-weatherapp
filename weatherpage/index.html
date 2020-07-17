@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
 
 
 </head>
+
 <body>
   <header>
     <div id="background-img"></div>
@@ -18,32 +20,32 @@
     <p>Tell me where you are and how you feel. Come back when your mood changes and we can trace how the weather might be impacting your mood!</p>
   </header>
   <main>
-  <div id="form">
-    <input id="zip" placeholder="Zip Code"></input>
-    <div id="units">I want my degrees in
-      <input type="radio" name="unit" value="imperial" checked>Fahrenheit</input>
-      <input type="radio" name="unit" value="metric">Celsius</input>
+    <div id="form">
+      <input id="zip" placeholder="Zip Code"></input>
+      <div id="units">I want my degrees in
+        <input type="radio" name="unit" value="imperial" checked>Fahrenheit</input>
+        <input type="radio" name="unit" value="metric">Celsius</input>
+      </div>
+      <textarea id="feelings" placeholder="I feel so blessed right now!"></textarea>
+      <button type="button" id="generate">update journal</button>
+      <div id="validate" class="hide">You got to give me something to go on! Please provide a ZIP</div>
     </div>
-    <textarea id="feelings" placeholder="I feel so blessed right now!"></textarea>
-    <button type="button" id="generate">update journal</button>
-    <div id="validate" class="hide">You got to give me something to go on! Please provide a ZIP</div>
-  </div>
 
-  <div id ="entryWrapper">
-  </div>
-</main>
-<footer>
-  <p>Weather app made by Luke Moyer with <a href="www.openweathermap.com">openweathermap.com</a></p>
-</footer>
-<!-- This is what project Rubric calls for -->
-<!-- <div id="entryHolder">
+    <div id="entryWrapper">
+    </div>
+  </main>
+  <footer>
+    <p>Weather app made by Luke Moyer with <a href="www.openweathermap.com">openweathermap.com</a></p>
+  </footer>
+  <!-- This is what project Rubric calls for -->
+  <!-- <div id="entryHolder">
   <div id="date"></div>
   <div id="time"></div>
   <div id="content"></div>
 </div> -->
 
-<!-- This is my template after js makes it -->
-<!-- <div class="entryHolder">
+  <!-- This is my template after js makes it -->
+  <!-- <div class="entryHolder">
   <div class="date">
     <p>Wed Jul 15 2020</p>
   </div>
@@ -65,4 +67,5 @@
 
 
 </body>
+
 </html>

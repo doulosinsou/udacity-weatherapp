@@ -3,7 +3,9 @@ const express = require('express');
 const app = express();
 
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(bodyParser.json());
 
 const cors = require('cors');
@@ -16,7 +18,7 @@ const server = app.listen(port, runServer);
 // server funcitons
 
 function runServer() {
-  console.log("this server is running on port " + port );
+  console.log("this server is running on port " + port);
 }
 
 app.use(express.static('weatherpage'));
@@ -26,7 +28,7 @@ app.use(express.static('weatherpage'));
 const projectData = [];
 app.post('/weather', addweatherdata);
 
-function addweatherdata(req, res){
+function addweatherdata(req, res) {
   projectData.push(req.body);
   res.send(projectData);
 
@@ -36,7 +38,8 @@ function addweatherdata(req, res){
 
 // Get weather Data
 app.get('/weather', getWeather);
-function getWeather(req, res){
+
+function getWeather(req, res) {
   res.send(projectData);
   console.log('Projectdata requested')
 }
