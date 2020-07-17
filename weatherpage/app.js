@@ -44,7 +44,6 @@ async function action() {
 const getWeather = async (url, location, unit, api) => {
   const feelings = document.getElementById('feelings').value;
   const res = await fetch(url + location + unit + api);
-  // res.new = "my new info";
   try {
     let data = await res.json();
     data.feels = feelings;
@@ -83,7 +82,6 @@ const findWeather = async (url = '') => {
   const request = await fetch(url);
   try {
     const newData = await request.json();
-    // console.log(newData);
     return newData;
   } catch (error) {
     console.log("error", error);
@@ -168,7 +166,6 @@ async function changePage() {
     const feelings = document.createElement('p');
     feelings.classList.add('feelings');
     feelings.innerHTML = '"' + weather.feels + '"';
-    // feelings.innerHTML = document.getElementById('feelings').value;
 
     // Create HTML elements
 
