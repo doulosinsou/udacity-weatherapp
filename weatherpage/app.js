@@ -169,7 +169,7 @@ async function changePage(){
     // create feelings block
     const feelings = document.createElement('p');
     feelings.classList.add('feelings');
-    feelings.innerHTML = weather.feels;
+    feelings.innerHTML = '"'+weather.feels+'"';
     // feelings.innerHTML = document.getElementById('feelings').value;
 
   // Create HTML elements
