@@ -3,6 +3,7 @@ body {
   padding: 50px;
   font-family: sans-serif;
   min-width: 570px;
+  position: relative;
 }
 
 header {
@@ -10,6 +11,21 @@ header {
   margin: 0 auto;
   text-align: center;
   font-size: 1.2em;
+}
+
+#entryHolder{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right:0;
+  text-align: center;
+  /* background-color: #000; */
+
+}
+#date, #time, #content {
+  color: white;
+  display: inline;
+  padding: 20px;
 }
 
 #form {

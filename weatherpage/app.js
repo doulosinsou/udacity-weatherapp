@@ -32,6 +32,10 @@ async function action() {
   if (data.main != null) {
     postData('/weather', data)
       .then(function() {
+        updateStagnant()
+      })
+    postData('/journal', data)
+      .then(function() {
         changePage()
       })
   } else {
@@ -88,9 +92,34 @@ const findWeather = async (url = '') => {
   }
 };
 
+// changes the ids of stagnant portion (Rubric requiremnt)
+async function updateStagnant(){
+  let weather = await findWeather('/weather');
+  console.log("stagnant data below: ");
+  console.log(weather);
+  weather = weather.data;
+  // get Time of API request
+  const today = new Date(weather.dt * 1000);
+  const hours = ((today.getHours() + 11) % 12 + 1);
+  let minutes = today.getMinutes();
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  let suffix = "AM";
+  if (hours <= 12) {
+    suffix = "PM";
+  }
+  const now = hours + ':' + minutes + suffix;
+
+  document.getElementById('date').innerHTML = "Date: "+today.toDateString();
+  document.getElementById('time').innerHTML = "Time: "+hours+":"+minutes+suffix;
+  document.getElementById('content').innerHTML = "Temp: "+weather.main.temp+" | "+"Clouds: "+weather.weather[0].description+" | "+ "Humidity: "+weather.main.humidity+"%";
+}
+
 //runs the page building
 async function changePage() {
-  const datacall = await findWeather('/weather');
+  const datacall = await findWeather('/journal');
+  console.log("Journal data below: ");
   console.log(datacall);
 
   document.getElementById('entryWrapper').innerHTML = "";

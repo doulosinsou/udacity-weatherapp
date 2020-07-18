@@ -25,14 +25,14 @@ app.use(express.static('weatherpage'));
 
 // Post weather Data
 
-const projectData = [];
+const projectData = {};
 app.post('/weather', addweatherdata);
 
 function addweatherdata(req, res) {
-  projectData.push(req.body);
-  res.send(projectData);
+  projectData.data = req.body;
+  res.send(projectData.data);
 
-  console.log(projectData);
+  console.log(projectData.data);
   console.log("weather data pushed successfully");
 }
 
@@ -42,4 +42,23 @@ app.get('/weather', getWeather);
 function getWeather(req, res) {
   res.send(projectData);
   console.log('Projectdata requested')
+}
+
+// post journal data
+const journalData = [];
+app.post('/journal', addjournaldata);
+
+function addjournaldata(req, res) {
+  journalData.push(req.body);
+  res.send(journalData);
+
+  console.log("journal data pushed successfully");
+}
+
+// Get journal Data
+app.get('/journal', getJournal);
+
+function getJournal(req, res) {
+  res.send(journalData);
+  console.log('journalData requested')
 }
