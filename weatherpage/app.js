@@ -23,7 +23,7 @@ function validate(e) {
 
 async function action() {
   const url = "https://api.openweathermap.org/data/2.5/weather?";
-  const api = "&appid=cc7294b368fa089de71eccdcee3e807b";
+  const api = "API_GOES_HERE";
   const location = "zip=" + document.getElementById('zip').value + ",us";
   const setUnit = document.querySelector('input[name="unit"]:checked').value;
   const unit = "&units=" + setUnit;
